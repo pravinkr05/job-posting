@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrepHire — Job Portal, Placement Prep &amp; Topic-Wise DSA Sheet</title>
+  <meta name="description" content="Complete career preparation platform featuring a curated Job Portal, Aptitude/DSA/Technical/HR prep notes and quizzes, Company Hiring Processes, and a topic-wise DSA Sheet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <!-- Top Header / Navigation -->
+    <header class="topbar">
+      <div class="topbar-inner container">
+        <a href="#dashboard" class="brand" data-route="dashboard">
+          <span class="brand-logo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>PrepHire</strong>
+            <small>Jobs &amp; Placement Studio</small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary Navigation">
+          <button class="nav-link active" data-route="dashboard">
+            <span class="nav-icon" data-icon="home"></span>
+            <span>Overview</span>
+          </button>
+          <button class="nav-link" data-route="jobs">
+            <span class="nav-icon" data-icon="briefcase"></span>
+            <span>Job Portal</span>
+          </button>
+          <button class="nav-link" data-route="prep">
+            <span class="nav-icon" data-icon="book"></span>
+            <span>Preparation</span>
+          </button>
+          <button class="nav-link" data-route="companies">
+            <span class="nav-icon" data-icon="building"></span>
+            <span>Hiring Process</span>
+          </button>
+          <button class="nav-link" data-route="dsa">
+            <span class="nav-icon" data-icon="code"></span>
+            <span>DSA Sheet</span>
+          </button>
+        </nav>
+
+        <div class="topbar-actions">
+          <button id="global-search-btn" class="search-trigger" title="Quick Search (/)">
+            <span data-icon="search"></span>
+            <span class="search-trigger-text">Search jobs, companies, DSA...</span>
+            <kbd>/</kbd>
+          </button>
+
+          <div class="header-progress-pill" id="header-progress-pill" title="DSA Sheet Progress">
+            <span class="pulse-dot"></span>
+            <span id="header-dsa-count">0/0 DSA</span>
+          </div>
+
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle color theme" title="Toggle Dark/Light Theme">
+            <span data-icon="moon"></span>
+          </button>
+
+          <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Toggle Menu">
+            <span data-icon="menu"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobile-nav" class="mobile-nav hidden">
+        <button class="nav-link active" data-route="dashboard">Overview</button>
+        <button class="nav-link" data-route="jobs">Job Portal</button>
+        <button class="nav-link" data-route="prep">Preparation (Aptitude, DSA, Tech, HR)</button>
+        <button class="nav-link" data-route="companies">Companies Hiring Process</button>
+        <button class="nav-link" data-route="dsa">Topic-Wise DSA Sheet</button>
+      </div>
+    </header>
+
+    <!-- Main Dynamic View -->
+    <main id="main-content" class="main-content container" tabindex="-1">
+      <!-- Rendered dynamically by js/app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>PrepHire</strong> — Built for focused placement &amp; engineering interview preparation.
+        </div>
+        <div class="footer-links">
+          <a href="#jobs" data-route="jobs">Jobs</a>
+          <a href="#prep" data-route="prep">Aptitude &amp; Tech</a>
+          <a href="#companies" data-route="companies">Company Patterns</a>
+          <a href="#dsa" data-route="dsa">DSA Sheet</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Slide-over Detail Drawer -->
+  <div id="drawer-backdrop" class="drawer-backdrop hidden" aria-hidden="true">
+    <aside id="detail-drawer" class="detail-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="drawer-header">
+        <div>
+          <div id="drawer-eyebrow" class="drawer-eyebrow"></div>
+          <h2 id="drawer-title" class="drawer-title"></h2>
+        </div>
+        <button id="drawer-close" class="icon-btn" aria-label="Close drawer">
+          <span data-icon="x"></span>
+        </button>
+      </div>
+      <div id="drawer-body" class="drawer-body"></div>
+    </aside>
+  </div>
+
+  <!-- Center Modal (Apply / Quick Search / Notes) -->
+  <div id="modal-backdrop" class="modal-backdrop hidden" aria-hidden="true">
+    <div id="app-modal" class="app-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title"></h3>
+        <button id="modal-close" class="icon-btn" aria-label="Close modal">
+          <span data-icon="x"></span>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
